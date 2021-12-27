@@ -9,11 +9,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/Login" element={<Login />} />
-        <Route path="/" element={<App />}>
-          <Route path="Dashboard" element={<Dashboard />} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Login" element={<Login />} />
+          <Route path="/" element={<App />}>
+            <Route index element={<Dashboard />} />
+            <Route path="settings" element={<Dashboard />} />
+          </Route>
           <Route
             path="*"
             element={
@@ -22,9 +24,8 @@ ReactDOM.render(
               </main>
             }
           />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
