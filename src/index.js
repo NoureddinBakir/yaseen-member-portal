@@ -11,14 +11,14 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="/Login" element={<Login />} />
         <Route path="/" element={<App />}>
-          <Route path="Login" element={<Login />} />
           <Route path="Dashboard" element={<Dashboard />} />
           <Route
             path="*"
             element={
               <main style={{ padding: "1rem" }}>
-                <p>There's nothing here!</p>
+                <p>404 Error, check the URL</p>
               </main>
             }
           />

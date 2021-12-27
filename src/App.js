@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate, Navigate } from 'react-router-dom';
 import { NavBar } from './NavBar';
 
+const auth = () => {
+  const user = {loggedIn: true};
+  return user && user.loggedIn;
+}
+
 function App() {
-  return (
+  let isAuth = auth();
+  let navigate = useNavigate;
+
+  return isAuth ? (
     <div>
-      <NavBar/>
+      <NavBar />
       <Outlet />
     </div>
-  );
+  ) : <Navigate to="/Login" />;
 }
 
 export default App;
