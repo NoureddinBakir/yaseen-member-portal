@@ -14,7 +14,7 @@ ReactDOM.render(
           <Route path="/Login" element={<Login />} />
           <Route path="/" element={<App />}>
             <Route index element={<Dashboard />} />
-            <Route path="settings" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
           </Route>
           <Route
             path="*"

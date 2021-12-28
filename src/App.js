@@ -5,19 +5,13 @@ import { Link, Outlet, useNavigate, Navigate } from 'react-router-dom';
 import { NavBar } from './NavBar';
 import Login from './pages/Login';
 import Cookies from 'js-cookie';
+import Button from '@mui/material/Button';
 
 function App() {
   const [authState, setAuthState] = useState(()=> {
     return Cookies.get('authToken') == undefined ? false : true});
   
   let navigate = useNavigate();
-
-  function auth(){
-    // setting authToken (for now a bool) and having it expire after 7 days
-    Cookies.set('authToken', true, {expires: 7});
-    setAuthState(Cookies.get('authToken'));
-    console.log('2');
-  }
 
   function signOut(){
     setAuthState(false);
@@ -29,14 +23,11 @@ function App() {
     return(
     <div>
       <NavBar />
-      <button onClick={()=>auth()}>Bool</button>
-      <h2>{authState ? "true" : "false"}</h2>
-      <button onClick={()=>signOut()}>Sign Out</button>
       <Outlet />
+      <Button variant="contained" onClick={()=>signOut()}>Sign Out</Button>
     </div>
     );
   }else{
-    auth();
     return(<Login/>);
   }
 }
