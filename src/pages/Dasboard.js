@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 
-export default function Dashboard() {
+function Dashboard() {
     const [form, setForm] = useState([]);
 
-    async function fetchData() {
-        await fetch(" https://dummyapi.io/data/v1/user", { headers: { 'app-id': '61ca24b6bf95643e71ebbe39' } })
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    console.log(result.data);
-                    setForm(result.data);
-                },
-                (error) => {
-                    console.log("Error:" + error);
-                }
-            )
-    }
-
     useEffect(() => {
+        const fetchData = async () => {
+            await fetch(" https://dummyapi.io/data/v1/user", { headers: { 'app-id': '61ca24b6bf95643e71ebbe39' } })
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        console.log(result.data);
+                        setForm(result.data);
+                    },
+                    (error) => {
+                        console.log("Error:" + error);
+                    }
+                )
+        }
+
         fetchData();
     }, [])
 
@@ -27,12 +27,13 @@ export default function Dashboard() {
             <Form data={form} />
         </main>
     );
+
 }
 
 function Form(props) {
     const data = props.data;
     const listData = data.map((item) =>
-        <li key={item.id}>{item.firstName}</li>
+    <li key={item.id}>{item.firstName}</li>
     );
     return (
         <>
@@ -41,3 +42,5 @@ function Form(props) {
         </>
     );
 }
+
+export default Dashboard;
