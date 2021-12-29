@@ -69,3 +69,13 @@
     height: 70px;
     width: auto;
 }
+
+.SignOutButton {
+    align-self: center;
+}
+
+.Footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

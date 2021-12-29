@@ -25,7 +25,9 @@ function App() {
       <div>
         <NavBar />
         <Outlet />
-        <Button variant="contained" onClick={() => signOut()}>Sign Out</Button>
+        <div className='Footer'>
+          <Button variant="contained" className='SignOutButton' onClick={() => signOut()}>Sign Out</Button>
+        </div>
       </div>
     );
   } else {
